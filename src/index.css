@@ -130,9 +130,24 @@ body {
   .Nav li:focus,
   .Nav li:hover a,
   .Nav li:focus a {
-    background-color: #eee;
+    background-color: #d3d3d3;
     color: #333;
   }
+}
+
+.employee {
+  width: 100%;
+  height: 100vh;
+}
+
+.tasks {
+  width: 100%;
+  height: 100vh;
+}
+
+.top5 {
+  width: 100%;
+  height: 100vh;
 }
 
 @media only screen and (min-width: 992px) {

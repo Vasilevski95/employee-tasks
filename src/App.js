@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Employee from "./components/Employee";
 import { Route, Routes } from "react-router-dom";
 import Tasks from "./components/Tasks";
+import Top5 from "./components/Top5";
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
         <Route index element={<Employee />} />
         <Route path="tasks">
           <Route index element={<Tasks />} />
+        </Route>
+        <Route path="top5">
+          <Route index element={<Top5 />} />
         </Route>
       </Route>
     </Routes>

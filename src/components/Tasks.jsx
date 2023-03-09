@@ -2,7 +2,7 @@ import React from "react";
 
 const Tasks = () => {
   return (
-    <div>
+    <div className="tasks">
       <h1>These are my tasks</h1>
     </div>
   );
