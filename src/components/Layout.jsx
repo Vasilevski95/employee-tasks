@@ -1,17 +1,16 @@
 import React from "react";
 import Header from "./Header";
 import Nav from "./Nav";
-import Footer from "./Footer";
+
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className="App">
+    <div className="Layout">
       <Header title="Employees and tasks application" />
 
       <Nav />
       <Outlet />
-      <Footer />
     </div>
   );
 };
