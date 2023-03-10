@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-const Add = ({ employees, setEmployees, setIsAdding }) => {
+const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
     employees.push(newEmployee);
     localStorage.setItem("employees_data", JSON.stringify(employees));
     setEmployees(employees);
-    setIsAdding(false);
+    setIsAddingEmployee(false);
 
     Swal.fire({
       icon: "success",
@@ -84,6 +84,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
         <input
           id="date"
           type="date"
+          required
           name="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
@@ -95,7 +96,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
             className="muted-button"
             type="button"
             value="Cancel"
-            onClick={() => setIsAdding(false)}
+            onClick={() => setIsAddingEmployee(false)}
           />
         </div>
       </form>
@@ -103,4 +104,4 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
   );
 };
 
-export default Add;
+export default AddEmployee;

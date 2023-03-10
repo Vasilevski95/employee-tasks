@@ -1,0 +1,19 @@
+.Header h1 {
+  font-size: 1.5rem;
+}
+
+.Header svg {
+  font-size: 2rem;
+}
+
+@media only screen and (min-width: 610px) {
+  .Header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .Header svg {
+    font-size: 3rem;
+  }
+}

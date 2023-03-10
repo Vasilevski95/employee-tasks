@@ -26,18 +26,6 @@ body {
   align-items: center;
 }
 
-.Layout {
-  width: 100%;
-  /* max-width: 800px; */
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid #333;
-  box-shadow: 0px 0px 15px gray;
-}
-
 .Header,
 .Footer {
   width: 100%;
@@ -48,94 +36,15 @@ body {
   align-items: center;
 }
 
-.Header h1 {
-  font-size: 1.5rem;
-}
-
-.Header svg {
-  font-size: 2rem;
-}
-
-.Footer {
-  padding: 0.75rem;
-  display: grid;
-  place-content: center;
-}
-
-.Nav {
-  width: 100%;
-  background-color: #333;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.Nav ul {
-  color: #fff;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.Nav li {
-  padding: 1rem;
-}
-
-.Nav li:hover,
-.Nav li:focus {
-  padding: 1rem;
-}
-
-.Nav li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.Nav li:hover,
-.Nav li:focus,
-.Nav li:hover a,
-.Nav li:focus a {
-  background-color: #eee;
-  color: #333;
-}
-
-.Nav li:hover a,
-.Nav li:focus a {
-  cursor: pointer;
-}
-
 @media only screen and (min-width: 610px) {
   html {
     font-size: 22px;
   }
-
-  .Header h1 {
-    font-size: 2rem;
-  }
-
-  .Nav {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .Nav ul {
-    text-align: right;
-  }
-
-  .Nav li:hover,
-  .Nav li:focus,
-  .Nav li:hover a,
-  .Nav li:focus a {
-    background-color: #d3d3d3;
-    color: #333;
-  }
 }
 
 .employee {
+  width: 100%;
+  height: 100vh;
   overflow: scroll !important;
   overflow-x: hidden !important;
 }
@@ -143,6 +52,8 @@ body {
 .tasks {
   width: 100%;
   height: 100vh;
+  overflow: scroll !important;
+  overflow-x: hidden !important;
 }
 
 .top5 {
@@ -150,8 +61,51 @@ body {
   height: 100vh;
 }
 
-@media only screen and (min-width: 992px) {
-  .Header svg {
-    font-size: 3rem;
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+thead th {
+  border-bottom: 2px solid #dedede;
+}
+
+tfoot th {
+  border-top: 2px solid #dedede;
+}
+
+td {
+  border-bottom: 1px solid #dedede;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+}
+
+caption {
+  padding: 1rem 0;
+  caption-side: bottom;
+  color: #ababab;
+}
+
+.striped-table tbody tr:nth-child(odd) {
+  background-color: #c9d6ee;
+}
+
+.contain-table {
+  overflow-x: auto;
+}
+
+@media (min-width: 600px) {
+  .contain-table {
+    width: 100%;
   }
+}
+
+.small-font {
+  font-size: 14px;
 }

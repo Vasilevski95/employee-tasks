@@ -1,6 +1,10 @@
 import React from "react";
 
-const Table = ({ employees, handleEdit, handleDelete }) => {
+const TableEmployee = ({
+  employees,
+  handleEditEmployee,
+  handleDeleteEmployee,
+}) => {
   employees.forEach((employee, i) => {
     employee.id = i + 1;
   });
@@ -21,7 +25,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             <th>Last Name</th>
             <th>Email</th>
             <th>Salary</th>
-            <th>Date</th>
+            <th>Date of birth</th>
             <th colSpan={2} className="text-center">
               Actions
             </th>
@@ -31,7 +35,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
           {employees.length > 0 ? (
             employees.map((employee, i) => (
               <tr key={employee.id}>
-                <td>{i + 1}</td>
+                <td>{i + 1}.</td>
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
@@ -39,15 +43,19 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
                 <td>{employee.date} </td>
                 <td className="text-right">
                   <button
-                    onClick={() => handleEdit(employee.id)}
+                    onClick={() => handleDeleteEmployee(employee.id)}
+                    className="button muted-button"
+                  >
+                    Read
+                  </button>
+                  <button
+                    onClick={() => handleEditEmployee(employee.id)}
                     className="button muted-button"
                   >
                     Edit
                   </button>
-                </td>
-                <td className="text-left">
                   <button
-                    onClick={() => handleDelete(employee.id)}
+                    onClick={() => handleDeleteEmployee(employee.id)}
                     className="button muted-button"
                   >
                     Delete
@@ -66,4 +74,4 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
   );
 };
 
-export default Table;
+export default TableEmployee;

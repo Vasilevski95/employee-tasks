@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Nav.css";
 
 const Nav = () => {
   return (
@@ -13,6 +14,9 @@ const Nav = () => {
         </li>
         <li>
           <Link to="/top5">Top 5</Link>
+        </li>
+        <li>
+          <Link to="/description">Project description</Link>
         </li>
       </ul>
     </nav>

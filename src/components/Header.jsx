@@ -2,6 +2,7 @@ import React from "react";
 import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
 import { FiMonitor } from "react-icons/fi";
 import useWindowSize from "./Hook/useWindowSize";
+import "./Header.css";
 
 const Header = ({ title }) => {
   const { width } = useWindowSize();

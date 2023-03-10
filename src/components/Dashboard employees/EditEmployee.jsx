@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
+const EditEmployee = ({
+  employees,
+  selectedEmployee,
+  setEmployees,
+  setIsEditingEmployee,
+}) => {
   const id = selectedEmployee.id;
 
   const [firstName, setFirstName] = useState(selectedEmployee.firstName);
@@ -40,7 +45,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
 
     localStorage.setItem("employees_data", JSON.stringify(employees));
     setEmployees(employees);
-    setIsEditing(false);
+    setIsEditingEmployee(false);
 
     Swal.fire({
       icon: "success",
@@ -87,11 +92,11 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
           value={salary}
           onChange={(e) => setSalary(e.target.value)}
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">Date of birth</label>
         <input
           id="date"
+          name="begin"
           type="date"
-          name="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
@@ -102,7 +107,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
             className="muted-button"
             type="button"
             value="Cancel"
-            onClick={() => setIsEditing(false)}
+            onClick={() => setIsEditingEmployee(false)}
           />
         </div>
       </form>
@@ -110,4 +115,4 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
   );
 };
 
-export default Edit;
+export default EditEmployee;
