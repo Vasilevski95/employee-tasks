@@ -7,16 +7,16 @@ const Nav = () => {
     <nav className="Nav">
       <ul>
         <li>
-          <Link to="/">Employees</Link>
+          <Link to="/">Project</Link>
+        </li>
+        <li>
+          <Link to="/employees">Employees</Link>
         </li>
         <li>
           <Link to="/tasks">Tasks</Link>
         </li>
         <li>
           <Link to="/top5">Top 5</Link>
-        </li>
-        <li>
-          <Link to="/description">Project description</Link>
         </li>
       </ul>
     </nav>

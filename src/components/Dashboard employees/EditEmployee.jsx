@@ -84,7 +84,7 @@ const EditEmployee = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="salary">Salary ($)</label>
+        <label htmlFor="salary">Salary (din/month)</label>
         <input
           id="salary"
           type="number"
@@ -101,10 +101,10 @@ const EditEmployee = ({
           onChange={(e) => setDate(e.target.value)}
         />
         <div style={{ marginTop: "30px" }}>
-          <input type="submit" value="Update" />
+          <input type="submit" className="button" value="Update" />
           <input
             style={{ marginLeft: "12px" }}
-            className="muted-button"
+            className="button"
             type="button"
             value="Cancel"
             onClick={() => setIsEditingEmployee(false)}

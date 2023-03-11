@@ -9,7 +9,7 @@ import "./Layout.css";
 const Layout = () => {
   return (
     <div className="Layout">
-      <Header title="Employees app" />
+      <Header title="EMPLOYEES AND TASKS MANAGER" />
       <Nav />
       <Outlet />
       <Footer />

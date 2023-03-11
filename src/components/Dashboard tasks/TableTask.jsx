@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({ tasks, handleEditTask, handleDeleteTask }) => {
+const Table = ({ tasks, handleEditTask, handleDeleteTask, handleReadTask }) => {
   tasks.forEach((task, i) => {
     task.id = i + 1;
   });
@@ -31,20 +31,23 @@ const Table = ({ tasks, handleEditTask, handleDeleteTask }) => {
                 <td>{task.date} </td>
                 <td className="text-right">
                   <button
-                    onClick={() => handleDeleteTask(task.id)}
-                    className="button-crud"
+                    style={{ backgroundColor: "lightblue" }}
+                    onClick={() => handleReadTask(task.id)}
+                    className="button"
                   >
                     Read
                   </button>
                   <button
+                    style={{ backgroundColor: "#4caf50" }}
                     onClick={() => handleEditTask(task.id)}
-                    className="button-crud"
+                    className="button"
                   >
                     Edit
                   </button>
                   <button
+                    style={{ backgroundColor: "#f44336" }}
                     onClick={() => handleDeleteTask(task.id)}
-                    className="button-crud"
+                    className="button"
                   >
                     Delete
                   </button>

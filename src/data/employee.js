@@ -5,7 +5,7 @@ const employeesData = [
     lastName: "Janković",
     email: "marko@example.com",
     salary: "35600",
-    date: "1993-5-11",
+    date: "1993-05-12",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const employeesData = [
     lastName: "Antić",
     email: "marinna@example.com",
     salary: "56200",
-    date: "1996-2-5",
+    date: "1996-02-05",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const employeesData = [
     lastName: "Milenković",
     email: "dax95@example.com",
     salary: "79000",
-    date: "1995-3-25",
+    date: "1995-03-25",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const employeesData = [
     lastName: "Novaković",
     email: "danilo007@example.com",
     salary: "65600",
-    date: "1983-9-24",
+    date: "1983-09-24",
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const employeesData = [
     lastName: "Lučić",
     email: "andyl@example.com",
     salary: "120000",
-    date: "2001-2-22",
+    date: "2001-02-22",
   },
   {
     id: 7,
@@ -61,7 +61,7 @@ const employeesData = [
     lastName: "Milošević",
     email: "jellenamil@example.com",
     salary: "60000",
-    date: "1975-7-16",
+    date: "1975-07-16",
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const employeesData = [
     lastName: "Vasić",
     email: "mvasicc@example.com",
     salary: "71000",
-    date: "1982-8-21",
+    date: "1982-08-21",
   },
   {
     id: 10,

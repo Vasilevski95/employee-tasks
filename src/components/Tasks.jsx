@@ -3,8 +3,12 @@ import HeaderTask from "./Dashboard tasks/HeaderTask";
 import TableTask from "./Dashboard tasks/TableTask";
 import EditTask from "./Dashboard tasks/EditTask";
 import AddTask from "./Dashboard tasks/AddTask";
+import ReadTask from "./Dashboard tasks/ReadTask";
 
 const Tasks = ({
+  isReadingTask,
+  setIsReadingTask,
+  handleReadTask,
   handleEditTask,
   handleDeleteTask,
   selectedTask,
@@ -18,15 +22,22 @@ const Tasks = ({
   return (
     <div className="tasks">
       <div className="container">
-        {!isAddingTask && !isEditingTask && (
+        {!isReadingTask && !isAddingTask && !isEditingTask && (
           <>
             <HeaderTask setIsAddingTask={setIsAddingTask} />
             <TableTask
               tasks={tasks}
+              handleReadTask={handleReadTask}
               handleEditTask={handleEditTask}
               handleDeleteTask={handleDeleteTask}
             />
           </>
+        )}
+        {isReadingTask && (
+          <ReadTask
+            selectedTask={selectedTask}
+            setIsReadingTask={setIsReadingTask}
+          />
         )}
         {isAddingTask && (
           <AddTask

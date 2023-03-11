@@ -43,7 +43,7 @@ const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
     Swal.fire({
       icon: "success",
       title: "Updated!",
-      text: `${task.title}'s data has been updated.`,
+      text: `${task.title} task assigned by ${task.assignee} has been updated.`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -95,10 +95,10 @@ const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
           onChange={(e) => setDate(e.target.value)}
         />
         <div style={{ marginTop: "30px" }}>
-          <input type="submit" value="Update" />
+          <input type="submit" className="button" value="Update" />
           <input
             style={{ marginLeft: "12px" }}
-            className="muted-button"
+            className="button"
             type="button"
             value="Cancel"
             onClick={() => setIsEditingTask(false)}
