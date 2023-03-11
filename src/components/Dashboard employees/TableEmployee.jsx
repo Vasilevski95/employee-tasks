@@ -1,14 +1,13 @@
 import React from "react";
 
-const Table = ({ employees, handleEdit, handleDelete }) => {
+const TableEmployee = ({
+  employees,
+  handleReadEmployee,
+  handleEditEmployee,
+  handleDeleteEmployee,
+}) => {
   employees.forEach((employee, i) => {
     employee.id = i + 1;
-  });
-
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: null,
   });
 
   return (
@@ -21,7 +20,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             <th>Last Name</th>
             <th>Email</th>
             <th>Salary</th>
-            <th>Date</th>
+            <th>Date of birth</th>
             <th colSpan={2} className="text-center">
               Actions
             </th>
@@ -31,24 +30,31 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
           {employees.length > 0 ? (
             employees.map((employee, i) => (
               <tr key={employee.id}>
-                <td>{i + 1}</td>
+                <td>{i + 1}.</td>
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
-                <td>{formatter.format(employee.salary)}</td>
+                <td>{employee.salary} din</td>
                 <td>{employee.date} </td>
                 <td className="text-right">
                   <button
-                    onClick={() => handleEdit(employee.id)}
-                    className="button muted-button"
+                    style={{ backgroundColor: "lightblue" }}
+                    onClick={() => handleReadEmployee(employee.id)}
+                    className="button"
+                  >
+                    Read
+                  </button>
+                  <button
+                    style={{ backgroundColor: "	#4caf50" }}
+                    onClick={() => handleEditEmployee(employee.id)}
+                    className="button"
                   >
                     Edit
                   </button>
-                </td>
-                <td className="text-left">
                   <button
-                    onClick={() => handleDelete(employee.id)}
-                    className="button muted-button"
+                    style={{ backgroundColor: "#f44336" }}
+                    onClick={() => handleDeleteEmployee(employee.id)}
+                    className="button"
                   >
                     Delete
                   </button>
@@ -66,4 +72,4 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
   );
 };
 
-export default Table;
+export default TableEmployee;

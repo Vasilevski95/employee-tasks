@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-const Add = ({ employees, setEmployees, setIsAdding }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [salary, setSalary] = useState("");
-  const [date, setDate] = useState("");
+const EditEmployee = ({
+  employees,
+  selectedEmployee,
+  setEmployees,
+  setIsEditingEmployee,
+}) => {
+  const id = selectedEmployee.id;
 
-  const handleAdd = (e) => {
+  const [firstName, setFirstName] = useState(selectedEmployee.firstName);
+  const [lastName, setLastName] = useState(selectedEmployee.lastName);
+  const [email, setEmail] = useState(selectedEmployee.email);
+  const [salary, setSalary] = useState(selectedEmployee.salary);
+  const [date, setDate] = useState(selectedEmployee.date);
+
+  const handleUpdate = (e) => {
     e.preventDefault();
 
     if (!firstName || !lastName || !email || !salary || !date) {
@@ -20,8 +27,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
       });
     }
 
-    const id = employees.length + 1;
-    const newEmployee = {
+    const employee = {
       id,
       firstName,
       lastName,
@@ -30,15 +36,21 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
       date,
     };
 
-    employees.push(newEmployee);
+    for (let i = 0; i < employees.length; i++) {
+      if (employees[i].id === id) {
+        employees.splice(i, 1, employee);
+        break;
+      }
+    }
+
     localStorage.setItem("employees_data", JSON.stringify(employees));
     setEmployees(employees);
-    setIsAdding(false);
+    setIsEditingEmployee(false);
 
     Swal.fire({
       icon: "success",
-      title: "Added!",
-      text: `${firstName} ${lastName}'s data has been Added.`,
+      title: "Updated!",
+      text: `${employee.firstName} ${employee.lastName}'s data has been updated.`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -46,8 +58,8 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
 
   return (
     <div className="small-container">
-      <form onSubmit={handleAdd}>
-        <h1>Add Employee</h1>
+      <form onSubmit={handleUpdate}>
+        <h1>Edit Employee</h1>
         <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"
@@ -72,7 +84,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="salary">Salary ($)</label>
+        <label htmlFor="salary">Salary (din/month)</label>
         <input
           id="salary"
           type="number"
@@ -80,22 +92,22 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
           value={salary}
           onChange={(e) => setSalary(e.target.value)}
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">Date of birth</label>
         <input
           id="date"
+          name="begin"
           type="date"
-          name="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
         <div style={{ marginTop: "30px" }}>
-          <input type="submit" value="Add" />
+          <input type="submit" className="button" value="Update" />
           <input
             style={{ marginLeft: "12px" }}
-            className="muted-button"
+            className="button"
             type="button"
             value="Cancel"
-            onClick={() => setIsAdding(false)}
+            onClick={() => setIsEditingEmployee(false)}
           />
         </div>
       </form>
@@ -103,4 +115,4 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
   );
 };
 
-export default Add;
+export default EditEmployee;

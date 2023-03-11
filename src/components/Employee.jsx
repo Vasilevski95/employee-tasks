@@ -1,85 +1,56 @@
-import React, { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import HeaderEmployee from "./Dashboard employees/HeaderEmployee";
+import TableEmployee from "./Dashboard employees/TableEmployee";
+import EditEmployee from "./Dashboard employees/EditEmployee";
+import AddEmployee from "./Dashboard employees/AddEmployee";
+import ReadEmployee from "./Dashboard employees/ReadEmployee";
 
-import Header2 from "./Dashboard/Header2";
-import Table from "./Dashboard/Table";
-import Edit from "./Dashboard/Edit";
-import Add from "./Dashboard/Add";
-import { employeesData } from "../data/index.js";
-
-const Employee = () => {
-  const [employees, setEmployees] = useState(employeesData);
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
-  const [isAdding, setIsAdding] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("employees_data"));
-    if (data !== null && Object.keys(data).length !== 0) setEmployees(data);
-  }, []);
-
-  const handleEdit = (id) => {
-    const [employee] = employees.filter((employee) => employee.id === id);
-
-    setSelectedEmployee(employee);
-    setIsEditing(true);
-  };
-
-  const handleDelete = (id) => {
-    Swal.fire({
-      icon: "warning",
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
-    }).then((result) => {
-      if (result.value) {
-        const [employee] = employees.filter((employee) => employee.id === id);
-
-        Swal.fire({
-          icon: "success",
-          title: "Deleted!",
-          text: `${employee.firstName} ${employee.lastName}'s data has been deleted.`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-
-        const employeesCopy = employees.filter(
-          (employee) => employee.id !== id
-        );
-        localStorage.setItem("employees_data", JSON.stringify(employeesCopy));
-        setEmployees(employeesCopy);
-      }
-    });
-  };
-
+const Employee = ({
+  isReadingEmployee,
+  setIsReadingEmployee,
+  handleReadEmployee,
+  handleEditEmployee,
+  handleDeleteEmployee,
+  selectedEmployee,
+  isAddingEmployee,
+  setIsAddingEmployee,
+  isEditingEmployee,
+  setIsEditingEmployee,
+  employees,
+  setEmployees,
+}) => {
   return (
     <div className="employee">
       <div className="container">
-        {!isAdding && !isEditing && (
+        {!isReadingEmployee && !isAddingEmployee && !isEditingEmployee && (
           <>
-            <Header2 setIsAdding={setIsAdding} />
-            <Table
+            <HeaderEmployee setIsAddingEmployee={setIsAddingEmployee} />
+            <TableEmployee
               employees={employees}
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
+              handleReadEmployee={handleReadEmployee}
+              handleEditEmployee={handleEditEmployee}
+              handleDeleteEmployee={handleDeleteEmployee}
             />
           </>
         )}
-        {isAdding && (
-          <Add
-            employees={employees}
-            setEmployees={setEmployees}
-            setIsAdding={setIsAdding}
+        {isReadingEmployee && (
+          <ReadEmployee
+            selectedEmployee={selectedEmployee}
+            setIsReadingEmployee={setIsReadingEmployee}
           />
         )}
-        {isEditing && (
-          <Edit
+        {isAddingEmployee && (
+          <AddEmployee
+            employees={employees}
+            setEmployees={setEmployees}
+            setIsAddingEmployee={setIsAddingEmployee}
+          />
+        )}
+        {isEditingEmployee && (
+          <EditEmployee
             employees={employees}
             selectedEmployee={selectedEmployee}
             setEmployees={setEmployees}
-            setIsEditing={setIsEditing}
+            setIsEditingEmployee={setIsEditingEmployee}
           />
         )}
       </div>
