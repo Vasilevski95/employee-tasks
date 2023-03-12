@@ -3,7 +3,13 @@ import Swal from "sweetalert2";
 import Priority from "./Priority";
 import Status from "./Status";
 
-const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
+const EditTask = ({
+  tasks,
+  selectedTask,
+  setTasks,
+  setIsEditingTask,
+  employees,
+}) => {
   const id = selectedTask.id;
 
   const [title, setTitle] = useState(selectedTask.title);
@@ -83,10 +89,11 @@ const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
           value={assignee}
           onChange={(e) => setAssignee(e.target.value)}
         >
-          <option>Nikolina - Front-end team lead </option>
-          <option>Danilo - UI/UX team lead </option>
-          <option>Jelena - Product/project manager</option>
-          <option>Marko - Full-stack team lead</option>
+          {employees.map((employee) => (
+            <option key={employee.id} value={employee.fullName}>
+              {employee.fullName}
+            </option>
+          ))}
         </select>
 
         <label htmlFor="date">Date</label>

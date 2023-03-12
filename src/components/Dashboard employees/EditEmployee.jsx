@@ -9,16 +9,16 @@ const EditEmployee = ({
 }) => {
   const id = selectedEmployee.id;
 
-  const [firstName, setFirstName] = useState(selectedEmployee.firstName);
-  const [lastName, setLastName] = useState(selectedEmployee.lastName);
+  const [fullName, setFullName] = useState(selectedEmployee.fullName);
   const [email, setEmail] = useState(selectedEmployee.email);
+  const [phone, setPhone] = useState(selectedEmployee.phone);
   const [salary, setSalary] = useState(selectedEmployee.salary);
   const [date, setDate] = useState(selectedEmployee.date);
 
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    if (!firstName || !lastName || !email || !salary || !date) {
+    if (!fullName || !email || !phone || !salary || !date) {
       return Swal.fire({
         icon: "error",
         title: "Error!",
@@ -27,11 +27,25 @@ const EditEmployee = ({
       });
     }
 
+    if (
+      !/^(?:\+?\d{1,3}[-. (]?\d{3}[-. )]?\d{3}[-. ]?\d{4}|\d{3}-\d{7})$/.test(
+        phone
+      )
+    ) {
+      return Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Phone number must be in the valid format or XXX-XXXXXXX",
+        showConfirmButton: true,
+      });
+    }
+
     const employee = {
       id,
-      firstName,
-      lastName,
+      fullName,
+
       email,
+      phone,
       salary,
       date,
     };
@@ -50,7 +64,7 @@ const EditEmployee = ({
     Swal.fire({
       icon: "success",
       title: "Updated!",
-      text: `${employee.firstName} ${employee.lastName}'s data has been updated.`,
+      text: `${employee.fullName}  data has been updated.`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -60,22 +74,15 @@ const EditEmployee = ({
     <div className="small-container">
       <form onSubmit={handleUpdate}>
         <h1>Edit Employee</h1>
-        <label htmlFor="firstName">First Name</label>
+        <label htmlFor="fullName">Full Name</label>
         <input
-          id="firstName"
+          id="fullName"
           type="text"
-          name="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          name="fullName"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
         />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          id="lastName"
-          type="text"
-          name="lastName"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
+
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -83,6 +90,14 @@ const EditEmployee = ({
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="phone">Phone</label>
+        <input
+          id="phone"
+          type="text"
+          name="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
         />
         <label htmlFor="salary">Salary (din/month)</label>
         <input

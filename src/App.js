@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import Employee from "./components/Employee";
@@ -9,6 +8,7 @@ import Swal from "sweetalert2";
 import { employeesData } from "./data/employee";
 import { tasksData } from "./data/tasks";
 import ProjectDescription from "./components/Project description/ProjectDescription";
+import Missing from "./components/Missing/Missing";
 
 function App() {
   const [employees, setEmployees] = useState(employeesData);
@@ -84,7 +84,7 @@ function App() {
         Swal.fire({
           icon: "success",
           title: "Deleted!",
-          text: `${employee.firstName} ${employee.lastName}'s data has been deleted.`,
+          text: `${employee.name} data has been deleted.`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -178,6 +178,7 @@ function App() {
                 setTasks={setTasks}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
+                employees={employees}
               />
             }
           />
@@ -185,6 +186,7 @@ function App() {
         <Route path="top5">
           <Route index element={<Top5 employees={employees} />} />
         </Route>
+        <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
   );

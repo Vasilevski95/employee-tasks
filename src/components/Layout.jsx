@@ -16,4 +16,6 @@ const Layout = () => {
   );
 };
 
+//Layout that is visible on all of the pages, with outlet that determines on which route you are currently at
+
 export default Layout;

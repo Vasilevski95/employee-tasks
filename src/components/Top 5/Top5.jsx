@@ -4,7 +4,7 @@ import { topFive } from "../../data/topFive";
 const Top5 = () => {
   return (
     <div className="top5">
-      <h1>Our top achievements for the last month:</h1>
+      <h1>Our top achievements for the past month:</h1>
       {topFive.map((top) => (
         <div key={top.id} className="top5-container">
           {top.name}

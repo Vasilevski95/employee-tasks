@@ -14,9 +14,9 @@ const TableEmployee = ({
 
   const filteredEmployees = employees.filter(
     (employee) =>
-      employee.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      employee.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       employee.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.phone.toLowerCase().includes(searchQuery.toLowerCase()) ||
       employee.salary.toLowerCase().includes(searchQuery.toLowerCase()) ||
       employee.date.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -33,9 +33,9 @@ const TableEmployee = ({
         <thead>
           <tr>
             <th>No.</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Full name</th>
             <th>Email</th>
+            <th>Phone number</th>
             <th>Salary</th>
             <th>Date of birth</th>
             <th colSpan={2} className="text-center">
@@ -48,11 +48,12 @@ const TableEmployee = ({
             filteredEmployees.map((employee, i) => (
               <tr key={employee.id}>
                 <td>{i + 1}.</td>
-                <td>{employee.firstName}</td>
-                <td>{employee.lastName}</td>
+                <td>{employee.fullName}</td>
                 <td>{employee.email}</td>
+                <td>{employee.phone}</td>
                 <td>{employee.salary} din</td>
                 <td>{employee.date} </td>
+
                 <td className="text-right">
                   <button
                     style={{ backgroundColor: "lightblue" }}

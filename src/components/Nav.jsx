@@ -22,4 +22,6 @@ const Nav = () => {
   );
 };
 
+//With navigation user can navigate through the pages
+
 export default Nav;
