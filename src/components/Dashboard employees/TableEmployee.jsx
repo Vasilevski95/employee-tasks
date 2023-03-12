@@ -5,13 +5,30 @@ const TableEmployee = ({
   handleReadEmployee,
   handleEditEmployee,
   handleDeleteEmployee,
+  searchQuery,
+  setSearchQuery,
 }) => {
   employees.forEach((employee, i) => {
     employee.id = i + 1;
   });
 
+  const filteredEmployees = employees.filter(
+    (employee) =>
+      employee.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.salary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      employee.date.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="contain-table">
+      <input
+        type="search"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search employees..."
+      />
       <table className="striped-table">
         <thead>
           <tr>
@@ -28,7 +45,7 @@ const TableEmployee = ({
         </thead>
         <tbody>
           {employees.length > 0 ? (
-            employees.map((employee, i) => (
+            filteredEmployees.map((employee, i) => (
               <tr key={employee.id}>
                 <td>{i + 1}.</td>
                 <td>{employee.firstName}</td>
@@ -45,14 +62,14 @@ const TableEmployee = ({
                     Read
                   </button>
                   <button
-                    style={{ backgroundColor: "	#4caf50" }}
+                    style={{ backgroundColor: "lightgreen" }}
                     onClick={() => handleEditEmployee(employee.id)}
                     className="button"
                   >
                     Edit
                   </button>
                   <button
-                    style={{ backgroundColor: "#f44336" }}
+                    style={{ backgroundColor: "#ff8164" }}
                     onClick={() => handleDeleteEmployee(employee.id)}
                     className="button"
                   >

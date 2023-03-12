@@ -17,6 +17,8 @@ const Employee = ({
   setIsEditingEmployee,
   employees,
   setEmployees,
+  searchQuery,
+  setSearchQuery,
 }) => {
   return (
     <div className="employee">
@@ -29,6 +31,8 @@ const Employee = ({
               handleReadEmployee={handleReadEmployee}
               handleEditEmployee={handleEditEmployee}
               handleDeleteEmployee={handleDeleteEmployee}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
             />
           </>
         )}

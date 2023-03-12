@@ -101,14 +101,23 @@ const EditEmployee = ({
           onChange={(e) => setDate(e.target.value)}
         />
         <div style={{ marginTop: "30px" }}>
-          <input type="submit" className="button" value="Update" />
-          <input
-            style={{ marginLeft: "12px" }}
+          <button
+            style={{ backgroundColor: "lightgreen" }}
+            type="submit"
+            className="button"
+            value="Update"
+          >
+            Update
+          </button>
+          <button
+            style={{ marginLeft: "12px", backgroundColor: "#ff8164" }}
             className="button"
             type="button"
             value="Cancel"
             onClick={() => setIsEditingEmployee(false)}
-          />
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

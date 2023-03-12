@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import Priority from "./Priority";
+import Status from "./Status";
 
 const AddTask = ({ tasks, setTasks, setIsAddingTask }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [assignee, setAssignee] = useState("");
+  const [assignee, setAssignee] = useState("Nikolina - Front-end team lead");
   const [date, setDate] = useState("");
+  const [status, setStatus] = useState("In progress");
+  const [priority, setPriority] = useState("High");
 
   const handleAddTask = (e) => {
     e.preventDefault();
 
-    if (!title || !description || !assignee || !date) {
+    if (!title || !description || !assignee || !date || !status || !priority) {
       return Swal.fire({
         icon: "error",
         title: "Error!",
@@ -26,6 +30,8 @@ const AddTask = ({ tasks, setTasks, setIsAddingTask }) => {
       description,
       assignee,
       date,
+      status,
+      priority,
     };
 
     tasks.push(newTask);
@@ -70,11 +76,10 @@ const AddTask = ({ tasks, setTasks, setIsAddingTask }) => {
           value={assignee}
           onChange={(e) => setAssignee(e.target.value)}
         >
-          {tasks.map((task) => (
-            <option key={task.id} value={task.assignee}>
-              {task.assignee}
-            </option>
-          ))}
+          <option>Nikolina - Front-end team lead</option>
+          <option>Danilo - UI/UX team lead</option>
+          <option>Jelena - Product/project manager</option>
+          <option>Marko - Full-stack team lead</option>
         </select>
 
         <label htmlFor="date">Due date</label>
@@ -87,6 +92,8 @@ const AddTask = ({ tasks, setTasks, setIsAddingTask }) => {
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
+        <Status status={status} setStatus={setStatus} />
+        <Priority priority={priority} setPriority={setPriority} />
         <div style={{ marginTop: "30px" }}>
           <input className="button" type="submit" value="Add" />
           <input

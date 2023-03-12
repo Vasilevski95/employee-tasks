@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import Priority from "./Priority";
+import Status from "./Status";
 
 const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
   const id = selectedTask.id;
@@ -8,11 +10,13 @@ const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
   const [description, setDescription] = useState(selectedTask.description);
   const [assignee, setAssignee] = useState(selectedTask.assignee);
   const [date, setDate] = useState(selectedTask.date);
+  const [status, setStatus] = useState(selectedTask.status);
+  const [priority, setPriority] = useState(selectedTask.priority);
 
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    if (!title || !description || !assignee || !date) {
+    if (!title || !description || !assignee || !date || !status || !priority) {
       return Swal.fire({
         icon: "error",
         title: "Error!",
@@ -27,6 +31,8 @@ const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
       description,
       assignee,
       date,
+      status,
+      priority,
     };
 
     for (let i = 0; i < tasks.length; i++) {
@@ -77,11 +83,10 @@ const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
           value={assignee}
           onChange={(e) => setAssignee(e.target.value)}
         >
-          {tasks.map((task) => (
-            <option key={task.id} value={task.assignee}>
-              {task.assignee}
-            </option>
-          ))}
+          <option>Nikolina - Front-end team lead </option>
+          <option>Danilo - UI/UX team lead </option>
+          <option>Jelena - Product/project manager</option>
+          <option>Marko - Full-stack team lead</option>
         </select>
 
         <label htmlFor="date">Date</label>
@@ -94,15 +99,26 @@ const EditTask = ({ tasks, selectedTask, setTasks, setIsEditingTask }) => {
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
+        <Status status={status} setStatus={setStatus} />
+        <Priority priority={priority} setPriority={setPriority} />
         <div style={{ marginTop: "30px" }}>
-          <input type="submit" className="button" value="Update" />
-          <input
-            style={{ marginLeft: "12px" }}
+          <button
+            style={{ backgroundColor: "lightgreen" }}
+            type="submit"
+            className="button"
+            value="Update"
+          >
+            Update
+          </button>
+          <button
+            style={{ marginLeft: "12px", backgroundColor: "#ff8164" }}
             className="button"
             type="button"
             value="Cancel"
             onClick={() => setIsEditingTask(false)}
-          />
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>
