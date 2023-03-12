@@ -20,6 +20,7 @@ const Tasks = ({
   setTasks,
   searchQuery,
   setSearchQuery,
+  employees,
 }) => {
   return (
     <div className="tasks">
@@ -34,6 +35,7 @@ const Tasks = ({
               handleDeleteTask={handleDeleteTask}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
+              employees={employees}
             />
           </>
         )}
@@ -48,6 +50,7 @@ const Tasks = ({
             tasks={tasks}
             setTasks={setTasks}
             setIsAddingTask={setIsAddingTask}
+            employees={employees}
           />
         )}
         {isEditingTask && (
@@ -56,6 +59,7 @@ const Tasks = ({
             selectedTask={selectedTask}
             setTasks={setTasks}
             setIsEditingTask={setIsEditingTask}
+            employees={employees}
           />
         )}
       </div>

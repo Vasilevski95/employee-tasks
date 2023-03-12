@@ -308,11 +308,11 @@ input[type="email"],
 input[type="number"],
 input[type="date"] {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 7px;
+  margin-bottom: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 input[type="search"] {
@@ -321,7 +321,7 @@ input[type="search"] {
   margin-left: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 input[type="submit"],
@@ -329,8 +329,7 @@ input[type="button"] {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
-
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -342,11 +341,11 @@ label {
 
 select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 7px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 select:focus {
@@ -355,7 +354,7 @@ select:focus {
 }
 
 select option {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 /* Top 5 */
@@ -396,7 +395,7 @@ select option {
   padding-bottom: 10px;
 }
 
-/* Project */
+/* Project desc */
 
 .project-description {
   width: 100%;
@@ -435,11 +434,19 @@ select option {
 }
 
 .project-description li:before {
-  color: #0077be;
   position: absolute;
   left: 0;
   top: 2px;
   font-size: 16px;
+}
+
+.missing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 
 @media (min-width: 600px) {

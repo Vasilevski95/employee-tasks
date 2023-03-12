@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [salary, setSalary] = useState("");
   const [date, setDate] = useState("");
 
   const handleAdd = (e) => {
     e.preventDefault();
 
-    if (!firstName || !lastName || !email || !salary || !date) {
+    if (!fullName || !email || !phone || !salary || !date) {
       return Swal.fire({
         icon: "error",
         title: "Error!",
@@ -20,12 +20,25 @@ const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
       });
     }
 
+    if (
+      !/^(?:\+?\d{1,3}[-. (]?\d{3}[-. )]?\d{3}[-. ]?\d{4}|\d{3}-\d{7})$/.test(
+        phone
+      )
+    ) {
+      return Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Phone number must be in the valid format or XXX-XXXXXXX",
+        showConfirmButton: true,
+      });
+    }
+
     const id = employees.length + 1;
     const newEmployee = {
       id,
-      firstName,
-      lastName,
+      fullName,
       email,
+      phone,
       salary,
       date,
     };
@@ -38,7 +51,7 @@ const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
     Swal.fire({
       icon: "success",
       title: "Added!",
-      text: `${firstName} ${lastName}'s data has been Added.`,
+      text: `${fullName}  data has been Added.`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -48,22 +61,15 @@ const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
     <div className="small-container">
       <form onSubmit={handleAdd}>
         <h1>Add Employee</h1>
-        <label htmlFor="firstName">First Name</label>
+        <label htmlFor="fullName">Full Name</label>
         <input
-          id="firstName"
+          id="fullName"
           type="text"
-          name="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          name="fullName"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
         />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          id="lastName"
-          type="text"
-          name="lastName"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
+
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -71,6 +77,14 @@ const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="phone">Phone</label>
+        <input
+          id="phone"
+          type="text"
+          name="phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
         />
         <label htmlFor="salary">Salary (din/month)</label>
         <input
@@ -80,24 +94,35 @@ const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
           value={salary}
           onChange={(e) => setSalary(e.target.value)}
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date">Date of birth</label>
         <input
           id="date"
           type="date"
           required
           name="date"
+          min="1900-01-01"
+          max="2006-01-01"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
         <div style={{ marginTop: "30px" }}>
-          <input type="submit" className="button" value="Add" />
-          <input
-            style={{ marginLeft: "12px" }}
+          <button
+            style={{ backgroundColor: "lightgreen" }}
+            type="submit"
+            className="button"
+            value="Update"
+          >
+            Add
+          </button>
+          <button
+            style={{ marginLeft: "12px", backgroundColor: "#ff8164" }}
             className="button"
             type="button"
             value="Cancel"
             onClick={() => setIsAddingEmployee(false)}
-          />
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

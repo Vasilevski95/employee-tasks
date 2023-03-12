@@ -3,10 +3,12 @@ import Swal from "sweetalert2";
 import Priority from "./Priority";
 import Status from "./Status";
 
-const AddTask = ({ tasks, setTasks, setIsAddingTask }) => {
+const AddTask = ({ tasks, setTasks, setIsAddingTask, employees }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [assignee, setAssignee] = useState("Nikolina - Front-end team lead");
+  const [assignee, setAssignee] = useState(
+    employees.length > 0 ? employees[0].fullName : ""
+  );
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("In progress");
   const [priority, setPriority] = useState("High");
@@ -76,10 +78,11 @@ const AddTask = ({ tasks, setTasks, setIsAddingTask }) => {
           value={assignee}
           onChange={(e) => setAssignee(e.target.value)}
         >
-          <option>Nikolina - Front-end team lead</option>
-          <option>Danilo - UI/UX team lead</option>
-          <option>Jelena - Product/project manager</option>
-          <option>Marko - Full-stack team lead</option>
+          {employees.map((employee) => (
+            <option key={employee.id} value={employee.fullName}>
+              {employee.fullName}
+            </option>
+          ))}
         </select>
 
         <label htmlFor="date">Due date</label>
@@ -95,14 +98,23 @@ const AddTask = ({ tasks, setTasks, setIsAddingTask }) => {
         <Status status={status} setStatus={setStatus} />
         <Priority priority={priority} setPriority={setPriority} />
         <div style={{ marginTop: "30px" }}>
-          <input className="button" type="submit" value="Add" />
-          <input
-            style={{ marginLeft: "12px" }}
+          <button
+            style={{ backgroundColor: "lightgreen" }}
+            type="submit"
+            className="button"
+            value="Update"
+          >
+            Add
+          </button>
+          <button
+            style={{ marginLeft: "12px", backgroundColor: "#ff8164" }}
             className="button"
             type="button"
             value="Cancel"
             onClick={() => setIsAddingTask(false)}
-          />
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

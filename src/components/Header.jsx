@@ -26,4 +26,6 @@ const Header = ({ title }) => {
   );
 };
 
+//Header with addition of a custom hook that calculates the width of the screen and allows the user to see on what type of device he is currently in.
+
 export default Header;

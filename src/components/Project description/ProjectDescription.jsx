@@ -12,6 +12,7 @@ const ProjectDescription = () => {
         working closely with their in-house design team to ensure that the
         website meets their specific branding and design requirements.
       </p>
+
       <p>
         The project will involve building a custom website from scratch that is
         fast, user-friendly, and optimized for search engines. The website will
@@ -69,26 +70,24 @@ const ProjectDescription = () => {
         color blindness.
       </p>
       <p>
-        In addition, we will need to implement effective search engine
-        optimization (SEO) strategies to help the website rank higher in search
-        engine results pages. This will involve conducting keyword research,
-        optimizing page titles and descriptions, and creating high-quality
-        content that is relevant and engaging for our client's target audience.
-      </p>
-      <p>
         Finally, we will need to ensure that the website is secure and protected
         against potential threats, such as hacking attempts or data breaches.
         This will involve implementing encryption and authentication measures,
         as well as regularly testing the website for vulnerabilities and staying
         up-to-date with the latest security best practices.
       </p>
-      <strong>
-        If you have any other questions send me an e-mail:{" "}
-        <span>djordje.vasilevski95@gmail.com</span>
-      </strong>
-      <p style={{ color: "red" }}>
-        note: This is an example of some project that this team should do
+      <p>
+        The project is expected to start on{" "}
+        <strong>March 15, 2023, and end on May 20, 2023</strong> . This
+        timeframe will allow us to complete all the necessary development work,
+        conduct testing and debugging, and ensure that the website is fully
+        functional and meets the client's requirements.{" "}
       </p>
+      <p>
+        If you have any other questions send me an e-mail:{" "}
+        <span style={{ color: "red" }}>djordje.vasilevski95@gmail.com</span>
+      </p>
+      <p style={{ color: "red" }}>note: This is an example of some project</p>
     </div>
   );
 };
