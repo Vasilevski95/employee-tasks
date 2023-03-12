@@ -23,6 +23,8 @@ function App() {
   const [isEditingTask, setIsEditingTask] = useState(false);
   const [isReadingTask, setIsReadingTask] = useState(false);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("employees_data"));
     if (data !== null && Object.keys(data).length !== 0) setEmployees(data);
@@ -32,6 +34,8 @@ function App() {
     const data = JSON.parse(localStorage.getItem("tasks_data"));
     if (data !== null && Object.keys(data).length !== 0) setTasks(data);
   }, []);
+
+  //I retreived data from LocalStorage
 
   const handleReadTask = (id) => {
     const [task] = tasks.filter((task) => task.id === id);
@@ -47,6 +51,8 @@ function App() {
     setIsReadingEmployee(true);
   };
 
+  //These functions are used to implement read functionality for employees and tasks
+
   const handleEditEmployee = (id) => {
     const [employee] = employees.filter((employee) => employee.id === id);
 
@@ -60,6 +66,8 @@ function App() {
     setSelectedTask(task);
     setIsEditingTask(true);
   };
+
+  //These functions are used to implement edit functionality for employees and tasks
 
   const handleDeleteEmployee = (id) => {
     Swal.fire({
@@ -117,6 +125,8 @@ function App() {
     });
   };
 
+  //These functions are used to implement delete functionality for employees and tasks
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -142,6 +152,8 @@ function App() {
               setIsEditingEmployee={setIsEditingEmployee}
               employees={employees}
               setEmployees={setEmployees}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
             />
           }
         />
@@ -164,6 +176,8 @@ function App() {
                 setIsEditingTask={setIsEditingTask}
                 tasks={tasks}
                 setTasks={setTasks}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
               />
             }
           />
@@ -174,6 +188,8 @@ function App() {
       </Route>
     </Routes>
   );
+
+  //This is routing logic for every route
 }
 
 export default App;

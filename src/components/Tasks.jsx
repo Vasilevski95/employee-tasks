@@ -18,6 +18,8 @@ const Tasks = ({
   setIsEditingTask,
   tasks,
   setTasks,
+  searchQuery,
+  setSearchQuery,
 }) => {
   return (
     <div className="tasks">
@@ -30,6 +32,8 @@ const Tasks = ({
               handleReadTask={handleReadTask}
               handleEditTask={handleEditTask}
               handleDeleteTask={handleDeleteTask}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
             />
           </>
         )}

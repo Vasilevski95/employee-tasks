@@ -8,7 +8,11 @@ const ReadEmployee = ({ selectedEmployee, setIsReadingEmployee }) => {
       <h1>Email: {email}</h1>
       <h1>Salary: {salary} din</h1>
       <h1>Date of birth: {date}</h1>
-      <button className="button" onClick={() => setIsReadingEmployee(false)}>
+      <button
+        style={{ backgroundColor: "lightblue" }}
+        className="button"
+        onClick={() => setIsReadingEmployee(false)}
+      >
         Back to Employees
       </button>
     </div>

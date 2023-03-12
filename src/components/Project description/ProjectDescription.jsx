@@ -1,5 +1,4 @@
 import React from "react";
-import "./ProjectDescription.css";
 
 const ProjectDescription = () => {
   return (
