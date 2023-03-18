@@ -50,6 +50,14 @@ const AddTask = ({ tasks, setTasks, setIsAddingTask, employees }) => {
     });
   };
 
+  /*
+  If all the required fields are entered,
+  it creates a new task object with the next available id and the data entered by the user.
+  Then, it pushes this new task object to the existing list of tasks,
+  updates the list of tasks in the LocalStorage, and sets the updated task list using the setTasks function.
+  Finally, it sets the isAddingTask state to false, which hides the form for adding a new task, and shows a success message using the SweetAlert library.
+   */
+
   return (
     <div className="small-container">
       <form onSubmit={handleAddTask}>

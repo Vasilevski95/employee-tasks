@@ -44,6 +44,11 @@ function App() {
     setIsReadingTask(true);
   };
 
+  /*handleReadTask(id): This function takes an id parameter and filters the tasks array to find a task with a matching id.
+   It then sets the selected task to the first matching task, and sets the isReadingTask state to true.
+   This is used to implement the functionality to read/view a task.
+   */
+
   const handleReadEmployee = (id) => {
     const [employee] = employees.filter((employee) => employee.id === id);
 
@@ -51,7 +56,10 @@ function App() {
     setIsReadingEmployee(true);
   };
 
-  //These functions are used to implement read functionality for employees and tasks
+  /* handleReadEmployee(id): This function takes an id parameter and filters the employees array to find an employee with a matching id.
+  It then sets the selected employee to the first matching employee, and sets the isReadingEmployee state to true.
+  This is used to implement the functionality to read/view an employee.
+   */
 
   const handleEditEmployee = (id) => {
     const [employee] = employees.filter((employee) => employee.id === id);
@@ -60,6 +68,11 @@ function App() {
     setIsEditingEmployee(true);
   };
 
+  /* handleEditEmployee(id): This function takes an id parameter and filters the employees array to find an employee with a matching id.
+  It then sets the selected employee to the first matching employee, and sets the isEditingEmployee state to true.
+  This is used to implement the functionality to edit an existing employee.
+   */
+
   const handleEditTasks = (id) => {
     const [task] = tasks.filter((task) => task.id === id);
 
@@ -67,7 +80,9 @@ function App() {
     setIsEditingTask(true);
   };
 
-  //These functions are used to implement edit functionality for employees and tasks
+  /*handleEditTasks(id): This function takes an id parameter and filters the tasks array to find a task with a matching id.
+  It then sets the selected task to the first matching task, and sets the isEditingTask state to true.
+  This is used to implement the functionality to edit an existing task. */
 
   const handleDeleteEmployee = (id) => {
     Swal.fire({
@@ -98,6 +113,11 @@ function App() {
     });
   };
 
+  /*handleDeleteEmployee(id): This function takes an id parameter and filters the employees array to find an employee with a matching id.
+  It then prompts the user with a confirmation dialog to confirm the deletion of the selected employee.
+  If the user confirms the deletion, it removes the employee from the employees array, updates the localStorage with the updated array,
+  and sets the employees state to the updated array. This is used to implement the functionality to delete an existing employee. */
+
   const handleDeleteTask = (id) => {
     Swal.fire({
       icon: "warning",
@@ -125,7 +145,10 @@ function App() {
     });
   };
 
-  //These functions are used to implement delete functionality for employees and tasks
+  /*handleDeleteTask(id): This function takes an id parameter and filters the tasks array to find a task with a matching id.
+  It then prompts the user with a confirmation dialog to confirm the deletion of the selected task. If the user confirms the deletion,
+  it removes the task from the tasks array, updates the localStorage with the updated array, and sets the tasks state to the updated array.
+  This is used to implement the functionality to delete an existing task. */
 
   return (
     <Routes>

@@ -43,7 +43,6 @@ const EditEmployee = ({
     const employee = {
       id,
       fullName,
-
       email,
       phone,
       salary,
@@ -69,6 +68,10 @@ const EditEmployee = ({
       timer: 1500,
     });
   };
+
+  /* If all the required fields are filled out and the phone number is valid,
+  the function creates an employee object with the updated information and searches for the employee with the matching id in the employees array.
+  Once the employee is found, the function updates their information by splicing the old employee object and adding the new one in its place.*/
 
   return (
     <div className="small-container">

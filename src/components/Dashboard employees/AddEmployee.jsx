@@ -57,6 +57,14 @@ const AddEmployee = ({ employees, setEmployees, setIsAddingEmployee }) => {
     });
   };
 
+  /*
+  If all the required fields are entered and the phone number is in the valid format,
+  it creates a new employee object with the next available id and the data entered by the user.
+  Then, it pushes this new employee object to the existing list of employees,
+  updates the list of employees in the LocalStorage, and sets the updated employee list using the setEmployees function.
+  Finally, it sets the isAddingEmployee state to false, which hides the form for adding a new employee, and shows a success message using the SweetAlert library.
+   */
+
   return (
     <div className="small-container">
       <form onSubmit={handleAdd}>
