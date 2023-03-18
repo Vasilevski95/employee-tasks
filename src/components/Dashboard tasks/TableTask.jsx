@@ -21,6 +21,8 @@ const Table = ({
       task.status.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  /* This is a function that includes search query for employees */
+
   return (
     <div className="contain-table">
       <input

@@ -61,6 +61,10 @@ const EditTask = ({
     });
   };
 
+  /* If all the required fields are filled out ,
+  the function creates an task object with the updated information and searches for the task with the matching id in the tasks array.
+  Once the task is found, the function updates their information by splicing the old task object and adding the new one in its place.*/
+
   return (
     <div className="small-container">
       <form onSubmit={handleUpdate}>
